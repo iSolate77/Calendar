@@ -15,7 +15,7 @@ export default function Week(props) {
 
   return (
     <div className='flex justify-between'>
-      <div className='w-15 text-left self-center'>Week {props.number}</div>
+      <div className='w-15 text-left self-center text-lg font-semibold'>Week {props.number}</div>
       <div className='flex flex-grow p-2'>{renderDays()}</div>
     </div>
   )

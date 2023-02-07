@@ -17,7 +17,7 @@ export default function Semester(props) {
 
   return (
     <>
-      <div className='text-center'>Semester {props.number}</div>
+      <div className='text-center text-2xl font-bold'>Semester {props.number}</div>
       {renderWeeks()}
     </>
   )
