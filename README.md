@@ -6,4 +6,4 @@ Input box:
 ![input_box](https://github.com/iSolate77/Calendar/blob/main/assets/input_box.png?raw=true)
 
 Initial stage:
-![calendar]()https://github.com/iSolate77/Calendar/blob/main/assets/Calendar.png?raw=true
+![calendar](https://github.com/iSolate77/Calendar/blob/main/assets/Calendar.png?raw=true)
