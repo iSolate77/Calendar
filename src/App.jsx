@@ -4,7 +4,7 @@ import Navbar from './components/Navbar'
 
 export default function App() {
   const [date, setDate] = React.useState('')
-  const [semester, setSemester] = React.useState('2022-09-11')
+  const [semester, setSemester] = React.useState(1)
   const [inputVisible, setInputVisible] = React.useState(true)
   const [weeks, setWeeks] = React.useState('')
 
