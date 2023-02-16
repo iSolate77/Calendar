@@ -1,5 +1,6 @@
 import React from 'react'
 import Day from './Day'
+import moment from 'moment'
 
 export default function Week(props) {
 
@@ -7,7 +8,7 @@ export default function Week(props) {
     let days = []
     for (let i = 0; i < 5; i++) {
       days.push(
-        <Day number={i + 1} key={i} />
+        <Day number={i + 1} key={i} date={props.date} week={props.number}/>
       )
     }
     return days;

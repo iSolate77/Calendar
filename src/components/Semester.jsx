@@ -5,10 +5,10 @@ export default function Semester(props) {
 
   const renderWeeks = () => {
     let weeks = []
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < props.weeks; i++) {
       weeks.push(
         <div key={i}>
-          <Week number={i + 1} />
+          <Week number={i + 1} date={props.date} />
         </div>
       )
     }
