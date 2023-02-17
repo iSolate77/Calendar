@@ -38,9 +38,17 @@ export default function App() {
     setWeeks(e.target.value)
   }
 
+  const inputBoxHndler = () => {
+    setInputVisible(!inputVisible)
+  }
+
   return (
     <div className='h-screen'>
-      <Navbar />
+      <Navbar>
+        <button onClick={inputBoxHndler} className='w-full text-start'>
+          toggle input
+        </button>
+      </Navbar>
       {inputVisible && (
         <form onSubmit={submitHandler}>
           <div className="max-w-md mx-auto my-8 bg-white p-6 rounded-md shadow-md">
