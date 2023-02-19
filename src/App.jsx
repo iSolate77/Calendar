@@ -46,7 +46,7 @@ export default function App() {
     <div className='h-screen'>
       <Navbar>
         <button onClick={inputBoxHndler} className='w-full text-start'>
-          toggle input
+          Toggle input
         </button>
       </Navbar>
       {inputVisible && (
