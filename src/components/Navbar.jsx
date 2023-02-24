@@ -44,7 +44,7 @@ export default function Navbar({ children }) {
           Display
         </button>
         {displayOpen && (
-          <div className='absolute top-12 right-24 bg-gray-100 w-28 shadow-xl rounded-md py-2'>
+          <div className='absolute top-12 right-24 bg-gray-100 w-46 shadow-xl rounded-md py-2'>
             <ul className='text-gray-700 text-sm font-semibold'>
               <li className='px-2 py-1 hover:bg-gray-300 cursor-pointer'>
                 <label className='inline-flex items-center'>
@@ -55,9 +55,10 @@ export default function Navbar({ children }) {
                     checked={selectedElements.includes('1')}
                     onChange={handleElementToggle}
                   />
-                  <span className='ml-2'>Syllabus</span>
+                  <span className='ml-2'>English Syllabus</span>
                 </label>
-              </li>              <li className='px-2 py-1 hover:bg-gray-300 cursor-pointer'>
+              </li>
+              <li className='px-2 py-1 hover:bg-gray-300 cursor-pointer'>
                 <label className='inline-flex items-center'>
                   <input
                     type='checkbox'
@@ -66,7 +67,55 @@ export default function Navbar({ children }) {
                     checked={selectedElements.includes('2')}
                     onChange={handleElementToggle}
                   />
+                  <span className='ml-2'>SS Syllabus</span>
+                </label>
+              </li>
+              <li className='px-2 py-1 hover:bg-gray-300 cursor-pointer'>
+                <label className='inline-flex items-center'>
+                  <input
+                    type='checkbox'
+                    className='form-checkbox'
+                    data-element-id='3'
+                    checked={selectedElements.includes('3')}
+                    onChange={handleElementToggle}
+                  />
+                  <span className='ml-2'>TW Syllabus</span>
+                </label>
+              </li>
+              <li className='px-2 py-1 hover:bg-gray-300 cursor-pointer'>
+                <label className='inline-flex items-center'>
+                  <input
+                    type='checkbox'
+                    className='form-checkbox'
+                    data-element-id='4'
+                    checked={selectedElements.includes('4')}
+                    onChange={handleElementToggle}
+                  />
+                  <span className='ml-2'>MT Syllabus</span>
+                </label>
+              </li>
+              <li className='px-2 py-1 hover:bg-gray-300 cursor-pointer'>
+                <label className='inline-flex items-center'>
+                  <input
+                    type='checkbox'
+                    className='form-checkbox'
+                    data-element-id='5'
+                    checked={selectedElements.includes('5')}
+                    onChange={handleElementToggle}
+                  />
                   <span className='ml-2'>Timetable</span>
+                </label>
+              </li>
+              <li className='px-2 py-1 hover:bg-gray-300 cursor-pointer'>
+                <label className='inline-flex items-center'>
+                  <input
+                    type='checkbox'
+                    className='form-checkbox'
+                    data-element-id='6'
+                    checked={selectedElements.includes('6')}
+                    onChange={handleElementToggle}
+                  />
+                  <span className='ml-2'>Exams</span>
                 </label>
               </li>
             </ul>
