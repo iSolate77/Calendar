@@ -1,38 +1,45 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react'
 
-export default function Navbar({ children }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [displayOpen, setDisplayOpen] = useState(false);
-  const [selectedElements, setSelectedElements] = useState([]);
-  const menuButtonRef = useRef(null);
-  const displayButtonRef = useRef(null);
+export default function Navbar({
+  children,
+  selectedElements,
+  setSelectedElements,
+}) {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [displayOpen, setDisplayOpen] = useState(false)
+  const menuButtonRef = useRef(null)
+  const displayButtonRef = useRef(null)
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (menuOpen && !menuButtonRef.current.contains(event.target)) {
-        setMenuOpen(false);
+        setMenuOpen(false)
       }
-      if (displayOpen && !displayButtonRef.current.contains(event.target) && !displayButtonRef.current.nextSibling.contains(event.target)) {
-        setDisplayOpen(false);
+      if (
+        displayOpen &&
+        !displayButtonRef.current.contains(event.target) &&
+        !displayButtonRef.current.nextSibling.contains(event.target)
+      ) {
+        setDisplayOpen(false)
       }
-    };
-    document.addEventListener('click', handleOutsideClick);
+    }
+    document.addEventListener('click', handleOutsideClick)
 
     return () => {
-      document.removeEventListener('click', handleOutsideClick);
-    };
-  }, [menuOpen, displayOpen]);
+      document.removeEventListener('click', handleOutsideClick)
+    }
+  }, [menuOpen, displayOpen])
 
   const handleElementToggle = (event) => {
-    const elementId = event.target.dataset.elementId;
-    const isSelected = selectedElements.includes(elementId);
+    const elementId = event.target.dataset.elementId
+    const isSelected = selectedElements.includes(elementId)
 
     if (isSelected) {
-      setSelectedElements(selectedElements.filter((id) => id !== elementId));
+      setSelectedElements(selectedElements.filter((id) => id !== elementId))
     } else {
-      setSelectedElements([...selectedElements, elementId]);
+      setSelectedElements([...selectedElements, elementId])
     }
-  };
+  }
 
   return (
     <div className='bg-gradient-to-r from-green-700 to-green-500 w-screen p-3 text-white flex justify-between mb-3'>
@@ -40,7 +47,11 @@ export default function Navbar({ children }) {
         <a href='/'>Foundation Year Calendar</a>
       </div>
       <div>
-        <button onClick={() => setDisplayOpen(!displayOpen)} ref={displayButtonRef} className='mr-2'>
+        <button
+          onClick={() => setDisplayOpen(!displayOpen)}
+          ref={displayButtonRef}
+          className='mr-2'
+        >
           Display
         </button>
         {displayOpen && (
