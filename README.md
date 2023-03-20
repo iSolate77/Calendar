@@ -2,7 +2,7 @@
 ## Project goal
 I'm creating a solution to improve academic calendars, allowing institutions to adjust their schedules for unforeseen events and optimize staff time. The solution also enables staff to choose and display different information to customize the calendar for their institution's unique requirements.
 ## Brief Summary
-The Academic Calendar is a web application that displays a calendar view of the academic year, with the ability to toggle between different types of events, such as syllabus, exams, and timetables. The application has three types of users: admin, teachers, and students. Admin users have the ability to manage user privileges and make changes to the data available to be displayed. Teachers can request changes that are subject to admin's approval, and students can view the information on the calendar.
+The Academic Calendar is a web application that displays a calendar view of the academic year, with the ability to toggle between different types of events, such as syllabus, exams, and timetables. The application has three types of users: admin (Coordinator), teachers, and students. Admin users have the ability to manage user privileges and make changes to the data available to be displayed. Teachers can request changes that are subject to admin's approval, and students can view the information on the calendar.
 
 The front-end of the application is built using the React library, with a custom Navbar component, Semester component, Week component, Day component, and Box component(so far). The back-end is built using the Firebase platform, which provides secure authentication and a real-time database.
 
