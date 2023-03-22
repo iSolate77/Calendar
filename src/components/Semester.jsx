@@ -8,7 +8,7 @@ export default function Semester(props) {
     for (let i = 0; i < props.weeks; i++) {
       weeks.push(
         <div key={i}>
-          <Week number={i + 1} date={props.date} />
+          <Week number={i + 1} date={props.date} selectedElements={props.selectedElements} />
         </div>
       )
     }

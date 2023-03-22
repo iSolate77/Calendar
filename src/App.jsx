@@ -129,7 +129,7 @@ export default function App() {
         </form>
       )}
       {!inputVisible && date && semester && (
-        <Semester number={semester} date={date} weeks={weeks} />
+        <Semester number={semester} date={date} weeks={weeks} selectedElements={selectedElements} />
       )}
     </div>
   )
