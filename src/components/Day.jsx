@@ -7,8 +7,8 @@ export default function Day(props) {
   let date = moment(props.date).add(props.number - 1 + ((props.week - 1) * 7), 'days').format('DD MMM')
   return (
     <>
-      <div className='w-15 text-left self-center w-full'>
-        <div className='text-center border-y-2 border-x'>
+      <div className='text-left self-center w-full'>
+        <div className='text-center border-y-2 border-x min-w-16'>
           <div>
             {date}
           </div>
