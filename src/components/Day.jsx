@@ -17,7 +17,7 @@ export default function Day(props) {
           </div>
         </div>
         <div>
-          <Box />
+          <Box selectedElements={props.selectedElements}/>
         </div>
       </div>
     </>

@@ -42,11 +42,11 @@ export default function Navbar({
   }
 
   return (
-    <div className='bg-gradient-to-r from-green-700 to-green-500 w-screen p-3 text-white flex justify-between mb-3'>
+    <div className='bg-gradient-to-r from-green-700 to-green-500 min-w-full p-3 text-white flex justify-between mb-3'>
       <div className='font-extrabold text-2xl'>
         <a href='/'>Foundation Year Calendar</a>
       </div>
-      <div>
+      <div className='flex'>
         <button
           onClick={() => setDisplayOpen(!displayOpen)}
           ref={displayButtonRef}
@@ -62,8 +62,8 @@ export default function Navbar({
                   <input
                     type='checkbox'
                     className='form-checkbox'
-                    data-element-id='1'
-                    checked={selectedElements.includes('1')}
+                    data-element-id='English'
+                    checked={selectedElements.includes('English')}
                     onChange={handleElementToggle}
                   />
                   <span className='ml-2'>English Syllabus</span>
@@ -74,8 +74,8 @@ export default function Navbar({
                   <input
                     type='checkbox'
                     className='form-checkbox'
-                    data-element-id='2'
-                    checked={selectedElements.includes('2')}
+                    data-element-id='SS'
+                    checked={selectedElements.includes('SS')}
                     onChange={handleElementToggle}
                   />
                   <span className='ml-2'>SS Syllabus</span>
@@ -86,8 +86,8 @@ export default function Navbar({
                   <input
                     type='checkbox'
                     className='form-checkbox'
-                    data-element-id='3'
-                    checked={selectedElements.includes('3')}
+                    data-element-id='TW'
+                    checked={selectedElements.includes('TW')}
                     onChange={handleElementToggle}
                   />
                   <span className='ml-2'>TW Syllabus</span>
@@ -98,8 +98,8 @@ export default function Navbar({
                   <input
                     type='checkbox'
                     className='form-checkbox'
-                    data-element-id='4'
-                    checked={selectedElements.includes('4')}
+                    data-element-id='MT'
+                    checked={selectedElements.includes('MT')}
                     onChange={handleElementToggle}
                   />
                   <span className='ml-2'>MT Syllabus</span>
@@ -110,8 +110,8 @@ export default function Navbar({
                   <input
                     type='checkbox'
                     className='form-checkbox'
-                    data-element-id='5'
-                    checked={selectedElements.includes('5')}
+                    data-element-id='Timetable'
+                    checked={selectedElements.includes('Timetable')}
                     onChange={handleElementToggle}
                   />
                   <span className='ml-2'>Timetable</span>
@@ -122,8 +122,8 @@ export default function Navbar({
                   <input
                     type='checkbox'
                     className='form-checkbox'
-                    data-element-id='6'
-                    checked={selectedElements.includes('6')}
+                    data-element-id='Exams'
+                    checked={selectedElements.includes('Exams')}
                     onChange={handleElementToggle}
                   />
                   <span className='ml-2'>Exams</span>

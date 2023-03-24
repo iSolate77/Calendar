@@ -77,7 +77,7 @@ export default function App() {
             </select>
             <label
               htmlFor='week'
-              className='block text-gray-700 font-bold mb-2'
+              className='block text-gray-700 font-bold my-2'
             >
               Number of weeks:
             </label>
@@ -91,7 +91,7 @@ export default function App() {
             />
             <label
               htmlFor='date'
-              className='block text-gray-700 font-bold mb-2'
+              className='block text-gray-700 font-bold my-2'
             >
               Starting date:
             </label>
@@ -129,7 +129,7 @@ export default function App() {
         </form>
       )}
       {!inputVisible && date && semester && (
-        <Semester number={semester} date={date} weeks={weeks} />
+        <Semester number={semester} date={date} weeks={weeks} selectedElements={selectedElements} />
       )}
     </div>
   )

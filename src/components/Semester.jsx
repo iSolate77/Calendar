@@ -7,8 +7,8 @@ export default function Semester(props) {
     let weeks = []
     for (let i = 0; i < props.weeks; i++) {
       weeks.push(
-        <div key={i}>
-          <Week number={i + 1} date={props.date} />
+        <div key={i} className='inline-flex min-w-full'>
+          <Week number={i + 1} date={props.date} selectedElements={props.selectedElements} />
         </div>
       )
     }
@@ -16,9 +16,9 @@ export default function Semester(props) {
   }
 
   return (
-    <>
+    <div className='overflow-x-auto'>
       <div className='text-center text-2xl font-bold'>Semester {props.number}</div>
       {renderWeeks()}
-    </>
+    </div>
   )
 }
