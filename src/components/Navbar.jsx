@@ -42,11 +42,11 @@ export default function Navbar({
   }
 
   return (
-    <div className='bg-gradient-to-r from-green-700 to-green-500 w-screen p-3 text-white flex justify-between mb-3'>
+    <div className='bg-gradient-to-r from-green-700 to-green-500 min-w-full p-3 text-white flex justify-between mb-3'>
       <div className='font-extrabold text-2xl'>
         <a href='/'>Foundation Year Calendar</a>
       </div>
-      <div>
+      <div className='flex'>
         <button
           onClick={() => setDisplayOpen(!displayOpen)}
           ref={displayButtonRef}
