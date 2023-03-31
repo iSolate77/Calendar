@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import Semester from './components/Semester'
 import Navbar from './components/Navbar'
+import moment from 'moment'
 
 export default function App() {
-  const [date, setDate] = useState('')
+  const [date, setDate] = useState(moment())
   const [semester, setSemester] = useState(1)
   const [inputVisible, setInputVisible] = useState(true)
   const [weeks, setWeeks] = useState('')
   const [selectedElements, setSelectedElements] = useState([])
 
-  useEffect(() => {
-    console.log(selectedElements)
-  }, [selectedElements])
+  /* useEffect(() => { */
+  /*   console.log(selectedElements) */
+  /* }, [selectedElements]) */
 
   const dateHandler = (e) => {
     e.preventDefault()
-    setDate(e.target.value)
+    const selectedDate = moment(e.target.value)
+    if (selectedDate.day() === 0) {
+      setDate(selectedDate)
+    } else {
+      alert('Please select a Sunday as the starting day.')
+    }
   }
 
   const semesterHandler = (e) => {
@@ -99,8 +105,8 @@ export default function App() {
               type='date'
               id='date'
               name='date'
-              value={date}
-              onChange={dateHandler}
+              defaultValue={date.format('YYYY-MM-DD')}
+              onBlur={dateHandler}
               className='border border-gray-400 p-2 rounded-md w-full'
             />
             <div className='mt-4 flex justify-between'>
@@ -129,7 +135,12 @@ export default function App() {
         </form>
       )}
       {!inputVisible && date && semester && (
-        <Semester number={semester} date={date} weeks={weeks} selectedElements={selectedElements} />
+        <Semester
+          number={semester}
+          date={date}
+          weeks={weeks}
+          selectedElements={selectedElements}
+        />
       )}
     </div>
   )
