@@ -8,7 +8,7 @@ export default function Semester(props) {
     for (let i = 0; i < props.weeks; i++) {
       weeks.push(
         <div key={i} className='min-w-full'>
-          <Week number={i + 1} date={props.date} selectedElements={props.selectedElements} />
+          <Week number={i + 1} date={props.date} selectedElements={props.selectedElements} info={props.info}/>
         </div>
       )
     }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Semester from './components/Semester'
 import Navbar from './components/Navbar'
 import moment from 'moment'
+import { fetchEnglishData } from './services/firebase'
 
 export default function App() {
   const [date, setDate] = useState(moment())
@@ -9,10 +10,25 @@ export default function App() {
   const [inputVisible, setInputVisible] = useState(true)
   const [weeks, setWeeks] = useState('')
   const [selectedElements, setSelectedElements] = useState([])
+  const [info, setInfo] = useState(null)
 
-  /* useEffect(() => { */
-  /*   console.log(selectedElements) */
-  /* }, [selectedElements]) */
+  useEffect(() => {
+    const element = 'English'
+    console.log(selectedElements)
+    const fetchData = async () => {
+      if (selectedElements.includes(element)){
+        console.log('fetching data')
+        console.log('inside function')
+        const data = await fetchEnglishData()
+        setInfo(data);
+        console.log(data)
+      }
+    }
+    console.log('outside function before call')
+    fetchData()
+    console.log('outside function after call')
+  }, [selectedElements])
+
 
   const dateHandler = (e) => {
     e.preventDefault()
@@ -140,6 +156,7 @@ export default function App() {
           date={date}
           weeks={weeks}
           selectedElements={selectedElements}
+          info={info}
         />
       )}
     </div>
