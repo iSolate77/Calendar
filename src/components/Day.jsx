@@ -1,17 +1,22 @@
 import React from 'react'
 import Box from './Box'
 import moment from 'moment'
+import { fetchSyllabiData } from '../services/firebase'
 
 export default function Day(props) {
   let date = moment(props.date).format('DD MMM')
   let dayName = moment(props.date).format('dddd')
-  const dayData = props.info?.find((item) => {
-    return (
-      item.week === props.weekNumber &&
-      item.day === props.dayNumber &&
-      props.selectedElements.includes(item.element)
-    )
-  })
+
+  const dayData = async () => {
+    const data = await fetchSyllabiData([
+      {
+        subject: props.selectedElements, // assuming selectedElements is the subject name
+        week: props.weekNumber,
+        day: props.dayNumber,
+      },
+    ])
+    return data
+  }
 
   return (
     <>

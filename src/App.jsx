@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Calendar from './components/Calendar'
 import Navbar from './components/Navbar'
 import moment from 'moment'
-import { fetchEnglishData } from './services/firebase'
+import { fetchSyllabiData } from './services/firebase'
 
 export default function App() {
   const [date, setDate] = useState(moment())
@@ -13,12 +13,9 @@ export default function App() {
   const [info, setInfo] = useState(null)
 
   useEffect(() => {
-    const element = 'English'
     const fetchData = async () => {
-      if (selectedElements.includes(element)) {
-        const data = await fetchEnglishData()
-        setInfo(data)
-      }
+      const data = await fetchSyllabiData(selectedElements)
+      setInfo(data)
     }
     fetchData()
   }, [selectedElements])
