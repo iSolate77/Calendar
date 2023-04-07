@@ -15,7 +15,8 @@ export default function Week(props) {
         {daysArray.map((_, index) => (
           <Day
             key={index}
-            dayNumber={index + 1}
+            dayNumber={index}
+            weekNumber={props.weekNumber}
             date={props.date.clone().add(index, 'days')}
             selectedElements={props.selectedElements}
             info={props.info}
