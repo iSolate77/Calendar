@@ -8,15 +8,15 @@ import { getDatabase, ref, get} from 'firebase/database'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: 'AIzaSyD-Gn28lwBlCWt07SDL06ctQp4AMbteP7s',
-  authDomain: 'dynamic-calendar-29924.firebaseapp.com',
+  apiKey:process.env.API_KEY,
+  authDomain: `${process.env.PROJECT_ID}.firebaseapp.com`,
   databaseURL:
-    'https://dynamic-calendar-29924-default-rtdb.europe-west1.firebasedatabase.app',
-  projectId: 'dynamic-calendar-29924',
-  storageBucket: 'dynamic-calendar-29924.appspot.com',
-  messagingSenderId: '631726036662',
-  appId: '1:631726036662:web:05c6ace0989396cadf3817',
-  measurementId: 'G-3BGQ06NTNZ',
+    `https://${process.env.PROJECT_ID}-default-rtdb.europe-west1.firebasedatabase.app`,
+  projectId: `${process.env.PROJECT_ID}`,
+  storageBucket: `${process.env.PROJECT_ID}.appspot.com`,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId:process.env.APP_ID,
+  measurementId:process.env.MEASUREMENT_ID,
 }
 
 // Initialize Firebase
