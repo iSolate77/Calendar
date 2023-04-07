@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Semester from './components/Semester'
+import Calendar from './components/Calendar'
 import Navbar from './components/Navbar'
 import moment from 'moment'
 import { fetchEnglishData } from './services/firebase'
@@ -14,21 +14,14 @@ export default function App() {
 
   useEffect(() => {
     const element = 'English'
-    console.log(selectedElements)
     const fetchData = async () => {
-      if (selectedElements.includes(element)){
-        console.log('fetching data')
-        console.log('inside function')
+      if (selectedElements.includes(element)) {
         const data = await fetchEnglishData()
-        setInfo(data);
-        console.log(data)
+        setInfo(data)
       }
     }
-    console.log('outside function before call')
     fetchData()
-    console.log('outside function after call')
   }, [selectedElements])
-
 
   const dateHandler = (e) => {
     e.preventDefault()
@@ -64,7 +57,7 @@ export default function App() {
     setWeeks(e.target.value)
   }
 
-  const inputBoxHndler = () => {
+  const inputBoxHandler = () => {
     setInputVisible(!inputVisible)
   }
 
@@ -74,91 +67,27 @@ export default function App() {
         selectedElements={selectedElements}
         setSelectedElements={setSelectedElements}
       >
-        <button onClick={inputBoxHndler} className='w-full text-start'>
+        <button onClick={inputBoxHandler} className='w-full text-start'>
           Toggle input
         </button>
       </Navbar>
-      {inputVisible && (
-        <form onSubmit={submitHandler}>
-          <div className='max-w-md mx-auto my-8 bg-white p-6 rounded-md shadow-md'>
-            <label
-              htmlFor='semester'
-              className='block text-gray-700 font-bold mt-4 mb-2'
-            >
-              Semester:
-            </label>
-            <select
-              id='semester'
-              name='semester'
-              value={semester}
-              onChange={semesterHandler}
-              className='border border-gray-400 p-2 rounded-md w-full'
-            >
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-            </select>
-            <label
-              htmlFor='week'
-              className='block text-gray-700 font-bold my-2'
-            >
-              Number of weeks:
-            </label>
-            <input
-              type='number'
-              id='weeks'
-              name='weeks'
-              value={weeks}
-              onChange={weekHandler}
-              className='border border-gray-400 p-2 rounded-md w-full'
-            />
-            <label
-              htmlFor='date'
-              className='block text-gray-700 font-bold my-2'
-            >
-              Starting date:
-            </label>
-            <input
-              type='date'
-              id='date'
-              name='date'
-              defaultValue={date.format('YYYY-MM-DD')}
-              onBlur={dateHandler}
-              className='border border-gray-400 p-2 rounded-md w-full'
-            />
-            <div className='mt-4 flex justify-between'>
-              <button
-                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2'
-                type='submit'
-              >
-                Submit
-              </button>
-              <button
-                className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2'
-                type='button'
-                onClick={resetHandler}
-              >
-                Reset
-              </button>
-              <button
-                className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
-                type='button'
-                onClick={cancelHandler}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </form>
-      )}
-      {!inputVisible && date && semester && (
-        <Semester
-          number={semester}
-          date={date}
-          weeks={weeks}
-          selectedElements={selectedElements}
-          info={info}
-        />
-      )}
+      <Calendar
+        inputVisible={inputVisible}
+        date={date}
+        semester={semester}
+        weeks={weeks}
+        selectedElements={selectedElements}
+        info={info}
+        handlers={{
+          inputBoxHandler,
+          submitHandler,
+          resetHandler,
+          cancelHandler,
+          semesterHandler,
+          weekHandler,
+          dateHandler,
+        }}
+      />
     </div>
   )
 }
