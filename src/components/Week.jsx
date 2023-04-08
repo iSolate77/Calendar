@@ -20,6 +20,7 @@ export default function Week(props) {
             date={props.date.clone().add(index, 'days')}
             selectedElements={props.selectedElements}
             info={props.info}
+            setInfo={props.setInfo}
           />
         ))}
       </div>

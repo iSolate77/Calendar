@@ -14,11 +14,17 @@ export default function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchSyllabiData(selectedElements)
+      const elementsWithWeekAndDay = selectedElements.map((subject) => ({
+        subject,
+        week: weeks,
+        day: date.day(),
+      }))
+
+      const data = await fetchSyllabiData(elementsWithWeekAndDay)
       setInfo(data)
     }
     fetchData()
-  }, [selectedElements])
+  }, [selectedElements, weeks, date])
 
   const dateHandler = (e) => {
     e.preventDefault()
@@ -75,6 +81,7 @@ export default function App() {
         weeks={weeks}
         selectedElements={selectedElements}
         info={info}
+        setInfo={setInfo}
         handlers={{
           inputBoxHandler,
           submitHandler,

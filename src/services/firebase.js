@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
-import { getDatabase } from 'firebase/database'
+import { getDatabase, ref, child, get } from 'firebase/database'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,18 +22,37 @@ export const app = initializeApp(firebaseConfig)
 
 export const db = getDatabase(app)
 
-// write a function that retrieves the data from firebase realtime database
-export const fetchSyllabiData = async (selectedElements) => {
+export const fetchSyllabiData = async (elements, weekNumber, dayNumber) => {
   const syllabiData = await Promise.all(
-    selectedElements.map(async (element) => {
-      const { subject, week, day } = element
-      const snapshot = await db.ref('syllabi').child(subject).once('value')
+    elements.map(async (element) => {
+      const path = `syllabi`
+      const snapshot = await get(child(ref(db), path))
       const data = snapshot.val()
-      return data
-        ? data.find((item) => item.week === week && item.day === day)
-        : null
+      if (!data) return ''
+
+      // Filter subjects containing the word 'English'
+      const englishSubjects = Object.keys(data).filter((subjectName) =>
+        subjectName.includes('English')
+      )
+
+      let filteredData = ''
+
+      for (const subjectName of englishSubjects) {
+        const subjectData = data[subjectName]
+        const subjectDataArray = Object.values(subjectData)
+        const entry = subjectDataArray.find(
+          (entry) => entry.week === weekNumber && entry.day === dayNumber
+        )
+        if (entry !== undefined) {
+          // check if entry is not undefined
+          filteredData = entry.content
+          break
+        }
+      }
+
+      return filteredData 
     })
   )
 
-  return syllabiData.filter((data) => data !== null)
+  return syllabiData
 }

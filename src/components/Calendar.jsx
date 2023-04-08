@@ -93,6 +93,7 @@ export default function Calendar(props) {
           weeks={weeks}
           selectedElements={selectedElements}
           info={info}
+          setInfo={props.setInfo}
         />
       )}
     </>

@@ -33,6 +33,7 @@ export default function Semester(props) {
             date={props.date.clone().add(index, 'weeks')}
             selectedElements={props.selectedElements}
             info={props.info}
+            setInfo={props.setInfo}
           />
         ))}
       </div>
