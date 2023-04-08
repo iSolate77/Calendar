@@ -129,6 +129,18 @@ export default function Navbar({
                   <span className='ml-2'>Exams</span>
                 </label>
               </li>
+              <li className='px-2 py-1 hover:bg-gray-300 cursor-pointer'>
+                <label className='inline-flex items-center'>
+                  <input
+                    type='checkbox'
+                    className='form-checkbox'
+                    data-element-id='Homework'
+                    checked={selectedElements.includes('Homework')}
+                    onChange={handleElementToggle}
+                  />
+                  <span className='ml-2'>Homework</span>
+                </label>
+              </li>
             </ul>
           </div>
         )}
