@@ -44,6 +44,7 @@ export default function Calendar(props) {
               id='weeks'
               name='weeks'
               value={weeks}
+              min={1}
               onChange={handlers.weekHandler}
               className='border border-gray-400 p-2 rounded-md w-full'
             />
