@@ -25,7 +25,15 @@ export const db = getDatabase(app)
 export const fetchSyllabiData = async (elements, weekNumber, dayNumber) => {
   const syllabiData = await Promise.all(
     elements.map(async (element) => {
-      const path = element.subject
+      let path
+      if (typeof element === 'string') {
+        path = element
+      } else if (typeof element === 'object' && element.subject) {
+        path = element.subject
+      } else {
+        return ''
+      }
+
       const snapshot = await get(child(ref(db), path))
       const data = snapshot.val()
       if (!data) return ''
@@ -40,7 +48,6 @@ export const fetchSyllabiData = async (elements, weekNumber, dayNumber) => {
         // check if entry is not undefined
         filteredData = entry.content
       }
-
       return filteredData
     })
   )
