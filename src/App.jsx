@@ -43,6 +43,10 @@ export default function App() {
 
   const submitHandler = (e) => {
     e.preventDefault()
+    if (weeks <= 0 || weeks > 20 || isNaN(weeks) || !Number.isInteger(weeks)) {
+      alert('Please enter a valid week number. (1-20)')
+      return
+    }
     setInputVisible(false)
   }
 
@@ -52,6 +56,9 @@ export default function App() {
   }
 
   const cancelHandler = () => {
+    setDate(null)
+    setSemester(null)
+    setWeeks(null)
     setInputVisible(false)
   }
 
@@ -61,6 +68,11 @@ export default function App() {
   }
 
   const inputBoxHandler = () => {
+    if (inputVisible) {
+      setDate(null)
+      setSemester(null)
+      setWeeks(null)
+    }
     setInputVisible(!inputVisible)
   }
 
