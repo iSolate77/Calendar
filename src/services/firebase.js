@@ -25,32 +25,23 @@ export const db = getDatabase(app)
 export const fetchSyllabiData = async (elements, weekNumber, dayNumber) => {
   const syllabiData = await Promise.all(
     elements.map(async (element) => {
-      const path = `syllabi`
+      const path = element.subject
       const snapshot = await get(child(ref(db), path))
       const data = snapshot.val()
       if (!data) return ''
 
-      // Filter subjects containing the word 'English'
-      const englishSubjects = Object.keys(data).filter((subjectName) =>
-        subjectName.includes('English')
-      )
-
       let filteredData = ''
 
-      for (const subjectName of englishSubjects) {
-        const subjectData = data[subjectName]
-        const subjectDataArray = Object.values(subjectData)
-        const entry = subjectDataArray.find(
-          (entry) => entry.week === weekNumber && entry.day === dayNumber
-        )
-        if (entry !== undefined) {
-          // check if entry is not undefined
-          filteredData = entry.content
-          break
-        }
+      const subjectDataArray = Object.values(data)
+      const entry = subjectDataArray.find(
+        (entry) => entry.week === weekNumber && entry.day === dayNumber
+      )
+      if (entry !== undefined) {
+        // check if entry is not undefined
+        filteredData = entry.content
       }
 
-      return filteredData 
+      return filteredData
     })
   )
 

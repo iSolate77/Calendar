@@ -43,7 +43,7 @@ export default function App() {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    if (weeks <= 0 || weeks > 20 || isNaN(weeks) || !Number.isInteger(weeks)) {
+    if (weeks <= 0 || weeks > 20 || isNaN(weeks) || !Number.isInteger(+weeks)) {
       alert('Please enter a valid week number. (1-20)')
       return
     }
