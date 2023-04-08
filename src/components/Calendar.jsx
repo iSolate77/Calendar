@@ -45,6 +45,7 @@ export default function Calendar(props) {
               name='weeks'
               value={weeks}
               min={1}
+              max={20}
               onChange={handlers.weekHandler}
               className='border border-gray-400 p-2 rounded-md w-full'
             />
