@@ -26,7 +26,7 @@ export default function Calendar(props) {
             <select
               id='semester'
               name='semester'
-              value={semester}
+              value={semester || ''}
               onChange={handlers.semesterHandler}
               className='border border-gray-400 p-2 rounded-md w-full'
             >
@@ -43,7 +43,7 @@ export default function Calendar(props) {
               type='number'
               id='weeks'
               name='weeks'
-              value={weeks}
+              value={weeks || ''}
               min={1}
               max={20}
               onChange={handlers.weekHandler}
@@ -59,7 +59,7 @@ export default function Calendar(props) {
               type='date'
               id='date'
               name='date'
-              defaultValue={date.format('YYYY-MM-DD')}
+              defaultValue={date ? date.format('YYYY-MM-DD') : ''}
               onBlur={handlers.dateHandler}
               className='border border-gray-400 p-2 rounded-md w-full'
             />
