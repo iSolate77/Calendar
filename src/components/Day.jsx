@@ -14,9 +14,11 @@ export default function Day(props) {
       const data = await fetchSyllabiData(
         props.selectedElements,
         props.weekNumber,
-        props.dayNumber + 1,
+        props.dayNumber + 1
       )
-      const nonEmptyData = data.find((item) => item !== '' && item !== null)
+      const nonEmptyData = data
+        .filter((item) => item !== '' && item !== null)
+        .join('\n')
 
       if (nonEmptyData) {
         setContent(nonEmptyData)
