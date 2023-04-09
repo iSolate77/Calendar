@@ -68,12 +68,14 @@ export default function App() {
   }
 
   const inputBoxHandler = () => {
-    if (inputVisible) {
-      setDate(null)
-      setSemester(null)
-      setWeeks(null)
-    }
-    setInputVisible(!inputVisible)
+    setInputVisible((prevInputVisible) => {
+      if (prevInputVisible) {
+        setDate(null)
+        setSemester(null)
+        setWeeks(null)
+      }
+      return !prevInputVisible
+    })
   }
 
   return (
