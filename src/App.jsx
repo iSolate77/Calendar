@@ -26,6 +26,19 @@ export default function App() {
     fetchData()
   }, [selectedElements, weeks, date])
 
+  useEffect(() => {
+    const savedDate = localStorage.getItem('date')
+    const savedSemester = localStorage.getItem('semester')
+    const savedWeeks = localStorage.getItem('weeks')
+
+    if (savedDate && savedSemester && savedWeeks) {
+      setDate(moment(savedDate, 'YYYY-MM-DD'))
+      setWeeks(savedWeeks)
+      setSemester(savedSemester)
+      setInputVisible(false)
+    }
+  }, [])
+
   const dateHandler = (e) => {
     e.preventDefault()
     const selectedDate = moment(e.target.value)
@@ -47,7 +60,12 @@ export default function App() {
       alert('Please enter a valid week number. (1-20)')
       return
     }
-    setInputVisible(false)
+    if (date && semester && weeks) {
+      localStorage.setItem('date', date.format('YYYY-MM-DD'))
+      localStorage.setItem('semester', semester)
+      localStorage.setItem('weeks', weeks)
+      setInputVisible(false)
+    }
   }
 
   const resetHandler = () => {
