@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, child, get } from 'firebase/database'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -53,4 +54,21 @@ export const fetchSyllabiData = async (elements, weekNumber, dayNumber) => {
   )
 
   return syllabiData
+}
+
+export const signInUser = async (email, password) => {
+  try {
+    const auth = getAuth(app)
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    )
+    const user = userCredential.user
+    console.log(user)
+  } catch (error) {
+    const errorCode = error.code
+    const errorMessage = error.message
+    console.error(errorCode, errorMessage)
+  }
 }
